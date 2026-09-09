@@ -4,11 +4,7 @@
 
 echo "Running default assemble script..."
 
-cp -Rf /tmp/src/* ./
 
-DATE=$(date,"+%F")
-echo "$DATE" > ./info.html
-echo "Your info.html is working if you see this." >> ./info.html
 
 # Source the default assemble from the builder image
 if [ -f /usr/libexec/s2i/assemble ]; then
