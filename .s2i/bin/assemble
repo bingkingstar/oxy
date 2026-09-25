@@ -4,7 +4,7 @@
 
 echo "Running default assemble script..."
 
-cp /tmp/src/*.html ./
+cp -Rf /tmp/src/*.html ./
 
 DATE=$(date,"+%F")
 
