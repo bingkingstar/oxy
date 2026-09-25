@@ -4,11 +4,6 @@
 
 echo "Running default assemble script..."
 
-copy -Rf /tmp/src/*.html ./
-DATE=$(date,"+%F")
-
-echo "$DATE" >./info.html
-ecoh "This is the application oxy. If you see this its working" >>./info.html
 
 # Source the default assemble from the builder image
 if [ -f /usr/libexec/s2i/assemble ]; then
