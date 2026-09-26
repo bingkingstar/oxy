@@ -4,7 +4,7 @@
 
 echo "Running default assemble script..."
 
-chmod -R 777 ./ 
+cd /opt/app-root/src 
 cp -Rf /tmp/src/*.html ./
 DATE=$(date "+%F")
 echo "$DATE"  >./info.html
