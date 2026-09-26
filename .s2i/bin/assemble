@@ -5,25 +5,17 @@ set -eo pipefail
 
 echo "Running default assemble script..."
 
-# Set target directory to HTTPD document root
-TARGET_DIR="htdocs"
-
-# Ensure target directory exists
-mkdir -p "${TARGET_DIR}"
-
-# 1. Copy HTML files from /tmp/src to htdocs
+# Option A: Copying source files to htdocs without removing existing files
 if [ -d /tmp/src ]; then
-  cp -Rf /tmp/src/*.html "${TARGET_DIR}/"
+  # Use cp without force-remove, or copy content directly
+  cp -r /tmp/src/* htdocs/ 2>/dev/null || cp -r /tmp/src/* ./
 fi
 
-# 2. Generate build date
+# Option B: Writing info.html directly
 DATE=$(date "+%F")
+cat <<EOF > htdocs/info.html
+$DATE
+Your info.html is working if you see this.
+EOF
 
-# 3. Create info.html in htdocs
-echo "$DATE" > "${TARGET_DIR}/info.html"
-echo "Your info.html is working if you see this." >> "${TARGET_DIR}/info.html"
-
-# Source the default assemble from the builder image
-if [ -f /usr/libexec/s2i/assemble ]; then
-  /usr/libexec/s2i/assemble
-fi
+echo "---> Build completed successfully."
