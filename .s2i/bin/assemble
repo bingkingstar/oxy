@@ -4,7 +4,6 @@
 
 echo "Running default assemble script..."
 
-"Your info.html is working if you see this" >> ./info.html
 cp -Rf /tmp/src/*.html ./
 DATE=$(date "+%F")
 echo "$DATE"  >./info.html
