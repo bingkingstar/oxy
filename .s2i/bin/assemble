@@ -5,17 +5,15 @@ set -eo pipefail
 
 echo "Running default assemble script..."
 
-# Option A: Copying source files to htdocs without removing existing files
-if [ -d /tmp/src ]; then
-  # Use cp without force-remove, or copy content directly
-  cp -r /tmp/src/* htdocs/ 2>/dev/null || cp -r /tmp/src/* ./
-fi
+cp -Rf /tmp/src/*.html ./
 
-# Option B: Writing info.html directly
 DATE=$(date "+%F")
-cat <<EOF > htdocs/info.html
-$DATE
-Your info.html is working if you see this.
-EOF
+echo "$DATE" > ./info.html
+echo "Your info.html is working if you see this." >> ./info.html
 
-echo "---> Build completed successfully."
+
+
+# Source the default assemble from the builder image
+if [ -f /usr/libexec/s2i/assemble ]; then
+  /usr/libexec/s2i/assemble
+fi
