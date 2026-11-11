@@ -7,8 +7,8 @@
 
 echo "Running default assemble script..."
 cp /tmp/src/*.html ./
-DATE =$(date +%f)
-echo DATE > /info.html
+DATE =$(date +%f) > /info.html
+echo DATE >> /info.html
 echo "This is the application oxy. If you see this its working." >> /info.html
 
 
