@@ -1,19 +1,10 @@
 #!/bin/bash
 # This is the default assemble script
 # It does NOT copy HTML files or generate info.html yet
-#!/bin/bash
-# This is the default assemble script
-# It does NOT copy HTML files or generate info.html yet
 
 echo "Running default assemble script..."
-cp /tmp/src/*.html ./
-DATE =$(date +%f) > /info.html
-echo DATE >> /info.html
-echo "This is the application oxy. If you see this its working." >> /info.html
-
 
 # Source the default assemble from the builder image
 if [ -f /usr/libexec/s2i/assemble ]; then
   /usr/libexec/s2i/assemble
 fi
-
